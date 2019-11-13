@@ -86,12 +86,12 @@ export default class Demobar extends React.Component {
     }
 
     return (
-      <div className="clearfix" style={{ margin: '10px', width: '70%' }}>
-        <h4 className="pull-left">Preview</h4>
-        <button className="btn btn-primary pull-right" style={{ marginRight: '10px' }} onClick={this.showPreview.bind(this)}>Preview Form</button>
-        <button className="btn btn-default pull-right" style={{ marginRight: '10px' }} onClick={this.showShortPreview.bind(this)}>Alternate/Short Form</button>
-        <button className="btn btn-default pull-right" style={{ marginRight: '10px' }} onClick={this.showRoPreview.bind(this)}>Read Only Form</button>
+      <div className="pull-right" style={{ margin: '10px', width: '100%' }}>
+        <button className="btn btn-primary pull-left" style={{ marginRight: '10px' }} onClick={this.showPreview.bind(this)}>表单预览</button>
+        <button className="btn btn-default pull-left" style={{ marginRight: '10px' }} onClick={this.showShortPreview.bind(this)}>Alternate/Short Form</button>
+        <button className="btn btn-default pull-left" style={{ marginRight: '10px' }} onClick={this.showRoPreview.bind(this)}>表单只读</button>
 
+        <h4 className="pull-right">预览</h4>
         { this.state.previewVisible &&
           <div className={modalClass}>
             <div className="modal-dialog">
@@ -110,7 +110,7 @@ export default class Demobar extends React.Component {
                   data={this.state.data} />
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>Close</button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>关闭</button>
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default class Demobar extends React.Component {
                   data={this.state.data} />
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>Close</button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>关闭</button>
                 </div>
               </div>
             </div>
@@ -158,7 +158,7 @@ export default class Demobar extends React.Component {
                   hide_actions={false} />
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>Close</button>
+                  <button type="button" className="btn btn-default" data-dismiss="modal" onClick={this.closePreview.bind(this)}>关闭</button>
                 </div>
               </div>
             </div>

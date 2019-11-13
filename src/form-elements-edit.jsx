@@ -70,7 +70,7 @@ export default class FormElementsEdit extends React.Component {
 
   convertFromHTML(content) {
     const newContent = convertFromHTML(content);
-    if (!newContent.contentBlocks) {
+    if (!newContent.contentBlocks || !newContent.contentBlocks.length) {
       // to prevent crash when no contents in editor
       return EditorState.createEmpty();
     }
@@ -193,7 +193,7 @@ export default class FormElementsEdit extends React.Component {
         }
         { this.props.element.hasOwnProperty('label') &&
           <div className="form-group">
-            <label>Display Label</label>
+            <label>标签名</label>
             <Editor
               toolbar={toolbar}
               defaultEditorState={editorState}
@@ -204,14 +204,14 @@ export default class FormElementsEdit extends React.Component {
             <div className="checkbox">
               <label>
                 <input type="checkbox" checked={this_checked} value={true} onChange={this.editElementProp.bind(this, 'required', 'checked')} />
-                Required
+                必填项
               </label>
             </div>
             { this.props.element.hasOwnProperty('readOnly') &&
               <div className="checkbox">
                 <label>
                   <input type="checkbox" checked={this_read_only} value={true} onChange={this.editElementProp.bind(this, 'readOnly', 'checked')} />
-                  Read only
+                  只读模式
                 </label>
               </div>
             }

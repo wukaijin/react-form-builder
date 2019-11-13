@@ -125,7 +125,8 @@ export default class Preview extends React.Component {
       },
     });
     this.setState(newData);
-    store.dispatch('updateOrder', newData.data);
+    // console.log(newData);
+    store.dispatch('updateOrder', newData.data); // MARK
   }
 
   getElement(item, index) {
@@ -152,5 +153,5 @@ export default class Preview extends React.Component {
   }
 }
 Preview.defaultProps = {
-  showCorrectColumn: false, files: [], editMode: false, editElement: null, className: 'react-form-builder-preview pull-left',
+  showCorrectColumn: false, files: [], editMode: false, editElement: null, className: 'react-form-builder-preview pull-right',
 };

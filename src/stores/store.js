@@ -1,5 +1,6 @@
 import Store from 'beedle';
 import { get, post } from './requests';
+import { convertFormioComponentsToData, getFormioWidgetParams, getWrapper } from './utils';
 
 let _saveUrl;
 let _onPost;
@@ -15,7 +16,11 @@ const store = new Store({
     load(context, { loadUrl, saveUrl, data }) {
       _saveUrl = saveUrl;
       if (_onLoad) {
-        _onLoad().then(x => this.setData(context, x));
+        _onLoad().then(x => {
+          const localizedData = convertFormioComponentsToData(x);
+          this.setData(context, localizedData);
+          // this.setData(context, x)
+        });
       } else if (loadUrl) {
         get(loadUrl).then(x => {
           if (data && data.length > 0 && x.length === 0) {
@@ -46,7 +51,8 @@ const store = new Store({
 
     save(data) {
       if (_onPost) {
-        _onPost({ task_data: data });
+        // _onPost({ task_data: data });
+        _onPost(getWrapper(data.map(e => getFormioWidgetParams(e))));
       } else if (_saveUrl) {
         post(_saveUrl, { task_data: data });
       }
@@ -55,7 +61,6 @@ const store = new Store({
 
   mutations: {
     setData(state, payload) {
-      // eslint-disable-next-line no-param-reassign
       state.data = payload;
       return state;
     },
@@ -63,6 +68,7 @@ const store = new Store({
 
   initialState: {
     data: [],
+    correntForm: null
   },
 });
 

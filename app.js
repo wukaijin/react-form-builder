@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import DemoBar from './demobar';
 import FormBuilder from './src/index';
 import * as variables from './variables';
+import formio from './src/stores/formio';
 // import { get, post} from './src/stores/requests';
 // Add our stylesheets for the demo.
 require('./scss/application.scss');
@@ -10,6 +11,14 @@ require('./scss/application.scss');
 const url = '/api/formdata';
 const saveUrl = '/api/formdata';
 
+
+function onLoad() {
+  // return formio.get('/form/5dca712572c31134e223958d');
+  return formio.get('/form/5dca957572c31134e223958f'); // empty
+}
+function onPost(body) {
+  return formio.put('/form/5dca957572c31134e223958f', body);
+}
 // const content = [
 //   {
 //     id: '3A06600E-D7E1-44FD-AA0C-BFB8AB61B9F1',
@@ -144,6 +153,8 @@ ReactDOM.render(
   <FormBuilder.ReactFormBuilder variables={variables}
     url={url}
     saveUrl={saveUrl}
+    onLoad={onLoad}
+    onPost={onPost}
   />,
   document.getElementById('form-builder'),
 );

@@ -23,6 +23,7 @@
   ],
   "author": "Kiho Chang",
   "dependencies": {
+    "axios": "^0.19.0",
     "beedle": "^0.8.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.6.0",

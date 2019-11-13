@@ -20,3 +20,7 @@ export function get(url) {
     headers,
   }).then(response => response.json());
 }
+
+export function formio() {
+
+}
